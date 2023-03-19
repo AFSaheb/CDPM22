@@ -1,0 +1,1010 @@
+---
+title: "Survey Stats"
+output: html_document
+date: "2023-03-19"
+---
+
+```{r packages, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(viridis)
+library(readxl)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=14, fig.height=6) 
+```
+
+```{r APV, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-agata-pernus-voigt.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1,-7)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("AGATA PERNUS VOIGT")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot APV, echo=FALSE}
+p3
+```
+
+################################################################################
+
+
+```{r AZ, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-annalisa-zuccotti.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1,-7)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("ANNALISA ZUCCOTI")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot AZ, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r CR, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-chiara-redaelli.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1,-7)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("CHIARA REDAELLI")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot CR, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r FM, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-florian-mayer.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1,-7)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("FLORIAN MAYER")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot FM, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r JP, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-joana-passos.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("JOANNA PASSOS")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot JP, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r JBS, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-julia-banzhaf-strathmann.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1,-7)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("JULIA BANZHAF-STRATHMANN")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot JBS, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r MM, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-michael-maurer.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1,-7)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("MICHAEL MAURER")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot MM, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r NB, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-noemi-bender.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1,-7)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("NOEMI BENDER")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot NB, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r OOG, include=FALSE}
+#load dataset
+df <- read_excel("22-11-28_survey-olatunji-oluwole-gege.xlsx")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+df <- df[,c(-1,-7)]
+df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("OLATUNJI OLUWOLE GEGE")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot OOG, echo=FALSE}
+p3
+```
+
+################################################################################
+################################################################################
+
+```{r AH, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM.xls",sheet="AHIRTH")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5')
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("ALEXANDER HIRTH")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot AH, echo=FALSE}
+p3
+```
+
+################################################################################
+
+
+
+```{r MW, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM.xls",sheet="MWO")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("MARIE WOSNY")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot MW, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r EE, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM.xls",sheet="EE")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("ELIAS ECKERT")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot EE, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r SB, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM.xls",sheet="SBAARS")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("SEBASTIAN BAARS")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot SB, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r AMM, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM_2.xls",sheet="AMM")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("ANA-MATEA MIKECIN DRAZIC")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot AMM, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r MS, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM_2.xls",sheet="MS")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("MIRKO SOBOTTA")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot MS, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r JZ, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM_2.xls",sheet="JZ")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("JASMIN ZAHN")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot JZ, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r MB, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM_2.xls",sheet="MB")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("MANUEL BERNING")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot MB, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r KK, include=FALSE}
+#load dataset
+df <- read_excel("ZOOM_2.xls",sheet="KK")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  scale_fill_manual(values=colorset)+
+  #scale_fill_brewer(palette = "Blues")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("KATHARINA KIESEL")+
+  theme(plot.title = element_text(hjust = 1))+
+  theme(axis.text = element_text(size = 12))-> p3
+
+
+
+```
+
+```{r Plot KK, echo=FALSE}
+p3
+```
+
+################################################################################
+################################################################################
+
+```{r S1Ind, include=FALSE}
+#load dataset
+df <- read_excel("Stat_Sessions.xlsx",sheet="S1Ind")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+#colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+#np <- nrow(df)
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+  
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  #scale_fill_manual(values=colorset)+
+  scale_fill_brewer(palette = "Greens")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("Session 1:Project and Product Management in Industry",subtitle = paste("n=45-63"))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(plot.subtitle = element_text(hjust = 0.5))+
+  theme(axis.text = element_text(size = 12))-> p3
+```
+
+```{r Plot S1Ind, echo=FALSE}
+p3
+```
+
+###############################################################################
+
+```{r S2Ind, include=FALSE}
+#load dataset
+df <- read_excel("Stat_Sessions.xlsx",sheet="S2Ind")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+#colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+#np <- nrow(df)
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+  
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  #scale_fill_manual(values=colorset)+
+  scale_fill_brewer(palette = "Greens")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("Session 2: Project Management in Consulting",subtitle = paste("n=38-52"))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(plot.subtitle = element_text(hjust = 0.5))+
+  theme(axis.text = element_text(size = 12))-> p3
+```
+
+```{r Plot S2Ind, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r S1Acad, include=FALSE}
+#load dataset
+df <- read_excel("Stat_Sessions.xlsx",sheet="S1Acad")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+#colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+#np <- nrow(df)
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+  
+
+p1 + coord_flip() + 
+  scale_y_continuous(labels = scales::percent) +
+  ylab("")+
+  xlab("")+
+  #scale_fill_manual(values=colorset)+
+  scale_fill_brewer(palette = "Greens")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("Session 1: Project Management in Academia",subtitle = paste("n=12-21"))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(plot.subtitle = element_text(hjust = 0.5))+
+  theme(axis.text = element_text(size = 12))-> p3
+```
+
+```{r Plot S1Acad, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r S2Acad, include=FALSE}
+#load dataset
+df <- read_excel("Stat_Sessions.xlsx",sheet="S2Acad")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+#colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+#np <- nrow(df)
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+  
+
+p1 + coord_flip()+ 
+  scale_y_continuous(labels = scales::percent)+
+  ylab("")+
+  xlab("")+
+  #scale_fill_manual(values=colorset)+
+  scale_fill_brewer(palette = "Greens")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("Session 2: Project Management of the Unconventional",subtitle = paste("n=6-8"))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(plot.subtitle = element_text(hjust = 0.5))+
+  theme(axis.text = element_text(size = 12)) -> p3
+```
+
+```{r Plot S2Acad, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r D1, include=FALSE}
+#load dataset
+df <- read_excel("Stats_Day.xlsx",sheet="D1")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+#colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+#np <- nrow(df)
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+  
+
+p1 + coord_flip()+ 
+  scale_y_continuous(labels = scales::percent)+
+  ylab("")+
+  xlab("")+
+  #scale_fill_manual(values=colorset)+
+  scale_fill_brewer(palette = "Oranges")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("221124 CD",subtitle = paste("n=38-63"))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(plot.subtitle = element_text(hjust = 0.5))+
+  theme(axis.text = element_text(size = 12)) -> p3
+```
+
+```{r Plot D1, echo=FALSE}
+p3
+```
+
+################################################################################
+
+```{r D2, include=FALSE}
+#load dataset
+df <- read_excel("Stats_Day.xlsx",sheet="D2")
+
+#look at the first 5 columns 
+head(df)
+
+#Delete last two rows and the last column of the df
+#df <- df[,c(-1)]
+#df <- head(df, -2)
+
+#colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+#np <- nrow(df)
+
+df %>%  
+  gather(key = items, value = answer) %>% 
+  mutate(answer = factor(answer)) %>% 
+  ggplot(aes(x = items,fill = answer)) +
+  geom_bar(width=0.5,position = position_fill(reverse = TRUE))-> p1
+  
+
+p1 + coord_flip()+ 
+  scale_y_continuous(labels = scales::percent)+
+  ylab("")+
+  xlab("")+
+  #scale_fill_manual(values=colorset)+
+  scale_fill_brewer(palette = "Oranges")+
+  theme(legend.title = element_blank())+
+  theme_minimal()+
+  ggtitle("221125 CD",subtitle = paste("n=6-21"))+
+  theme(plot.title = element_text(hjust = 0.5))+
+  theme(plot.subtitle = element_text(hjust = 0.5))+
+  theme(axis.text = element_text(size = 12)) -> p3
+```
+
+```{r Plot D2, echo=FALSE}
+p3
+```
