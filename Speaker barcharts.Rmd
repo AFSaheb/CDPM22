@@ -1,0 +1,109 @@
+---
+title: "Speaker barcharts"
+output: html_document
+date: "2023-03-20"
+---
+
+```{r packages, include=FALSE}
+#load packages 
+library(tidyverse)
+library(viridis)
+library(readxl)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=14, fig.height=6) 
+```
+
+```{r speaker barcharts code, include=FALSE}
+
+#Define the colorset
+colorset = c("1"='#aaaaaa',"2"='#eff3ff',"3"='#bdd7e7',"4"='#6baed6',"5"='#2171b5' )
+
+#Create a function for the speakers survey data
+#cleaning the data 
+#generating a barchart with ggplot 
+
+speaker_barcharts <- function(df,speaker_name) {
+  #Check for empty rows and delete them
+  df_sub <- df[rowSums(is.na(df)) != ncol(df),]
+  
+  #Check for rows containing "Results" and delete them
+  df_sub <- df_sub[!apply(df_sub, 1, function(x) any(grepl("Results", x))), ]
+  
+  #Check if the df contains a date and comment column
+  #Define the date and comment column
+  date <- "Date"
+  comment <- "comment"
+  #grepl for creating logical vector 
+  #which for returning the indices of the columns 
+  col_index <- which(grepl(date,names(df_sub)) | grepl(comment,names(df_sub)))
+  
+  if(length(col_index) > 0) {
+    df_sub <- df_sub[,-col_index] #delete both columns 
+  } else {
+    stop("Error: df does not contain date or comment column") #return error message if not
+  }
+  
+  df_sub %>%  
+    gather(question,answer) %>% 
+    mutate(answer = factor(answer)) %>% 
+    ggplot(aes(y = question,fill = answer)) +
+    geom_bar(width=0.5,position = position_fill(reverse = TRUE)) +
+    scale_x_continuous(labels = scales::percent) +
+    ylab("")+
+    xlab("")+
+    scale_fill_manual(values=colorset)+
+    theme(legend.title = element_blank())+
+    theme_minimal()+
+    ggtitle(speaker_name)+
+    theme(plot.title = element_text(hjust = 1))+
+    theme(axis.text = element_text(size = 12))
+}
+
+
+#list all the speaker files
+file_list <- list.files(pattern=".*survey.*\\.xlsx")
+
+#create a empty list to store all dataframes 
+speakers_dfs <- list()
+
+# Loop over the file names and read in each file as a data frame
+for (file_name in file_list) {
+  # Read in the file as a data frame
+  df <- read_excel(paste0(file_name))
+  
+  # Add the data frame to the list
+  speakers_dfs[[file_name]] <- df
+}
+
+# Create an empty list to store the substrings
+speaker_names <- list()
+
+# Loop over the list of data frames and extract a substring from their names
+for(i in seq_along(speakers_dfs)) {
+  df_name <- names(speakers_dfs)[i]
+  substring <- gsub("-", " ",substring(df_name, first = 17, last=nchar(df_name) - 5)) # extract substring from character 17 until the end of the string and remove "-"
+  substring <- toupper(substring)
+  speaker_names[[i]] <- substring
+}
+
+# Create an empty list to store the plots
+plot_list <- list()
+
+# Loop over the list of data frames and call the function with the corresponding speaker name
+for (i in seq_along(speakers_dfs)) {
+  df <- speakers_dfs[[i]]
+  speaker_name <- speaker_names[[i]]
+  plot <- speaker_barcharts(df, speaker_name)
+  plot_list[[i]] <- plot
+}
+
+```
+
+```{r speaker barcharts, echo=FALSE}
+
+# Print the list of plots
+print(plot_list)
+
+```
